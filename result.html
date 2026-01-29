@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Career Analysis Result - SkillShift</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #decaca;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result-card {
+            background:#ba8a8a;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(100, 58, 58, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #772e2e;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            margin-top: 30px;
+            color: #5e3434;
+            font-weight: 600;
+        }
+
+        .skill-badge {
+            background-color:#5e3434;
+            margin: 5px 5px 0 0;
+        }
+        .mb-2{
+            border:#5e3434;
+        }
+        .list-group-item{
+            background-color:#decaca;
+            color:#5e3434;
+        }
+        .btn{
+            color:white;
+            background-color:#5e3434;
+            border:#5e3434;
+        }
+        .analysis-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.analysis-card {
+    width: 65%;
+}
+
+.confidence-card {
+    width: 35%;
+    background-color: #c19393;
+    padding: 30px;
+    border-radius: 20px;
+    height: fit-content;
+}
+
+.confidence-card h2 {
+    margin-bottom: 20px;
+}
+
+.confidence-value {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #4b2c2c;
+}
+
+       
+    
+    </style>
+</head>
+<body>
+
+<div class="result-card">
+
+    <h2 class="text-center">Career Analysis Result</h2>
+
+    <!-- User Info -->
+    <p><strong>Current Role:</strong> {{ role }}</p>
+    <p><strong>Years of Experience:</strong> {{ experience }}</p>
+    <p><strong>Risk Level:</strong> {{ risk }}</p>
+
+    <!-- AI Risk Progress Bar -->
+    <div class="mb-2">
+        <div class="progress" style="height: 16px;">
+            {% if risk_percentage > 70 %}
+                <div class="progress-bar bg-danger" style="width: {{ risk_percentage }}%;"></div>
+            {% elif risk_percentage > 40 %}
+                <div class="progress-bar bg-warning" style="width: {{ risk_percentage }}%;"></div>
+            {% else %}
+                <div class="progress-bar bg-success" style="width: {{ risk_percentage }}%;"></div>
+            {% endif %}
+        </div>
+        <small class="text-muted">
+            AI Disruption Score: {{ risk_percentage }}%
+        </small>
+    </div>
+
+    <!-- Skills Section -->
+    <h4>Recommended Skills to Learn</h4>
+    <div class="mt-2">
+        {% for skill in skills %}
+            <span class="badge bg-primary skill-badge">{{ skill }}</span>
+        {% endfor %}
+    </div>
+
+    <!-- Roadmap Section -->
+    <h4>Career Roadmap</h4>
+    <ul class="list-group mt-2">
+        {% for step in roadmap %}
+            <li class="list-group-item">{{ step }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Action Buttons -->
+    <div class="d-grid gap-2 mt-4">
+        <a href="/skill_input" class="btn btn-success">Analyze Another Role</a>
+        <a href="/" class="btn btn-outline-secondary">Back to Home</a>
+
+    </div>
+    <div style="margin-top: 30px; padding: 20px; background-color: #c19393; border-radius: 15px;">
+
+    <h3>Skill Confidence Score</h3>
+
+    <div style="font-size: 28px; font-weight: bold; color: #4b2c2c;">
+        {{ confidence }}%
+    </div>
+
+    <p style="font-size: 13px; margin-top: 10px;">
+        This score represents how job-ready you are based on performance and consistency.
+    </p>
+
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>
+
+

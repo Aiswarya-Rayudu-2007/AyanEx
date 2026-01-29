@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | Ayanex</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <style>
+        * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ba8a8a, #decaca);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-container {
+    background: white;
+    width: 370px;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+    text-align: center;
+}
+
+.register-container h2 {
+    margin-bottom: 6px;
+    color: #502e2c;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 22px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+input:focus {
+    border-color: #ba8a8a;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #502e2c;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+button:hover {
+    background: #3f2422;
+}
+
+.login-text {
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.login-text a {
+    color: #ba8a8a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <h2>Create Account 🚀</h2>
+    <p class="subtitle">Start your AI-safe career journey</p>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <p class="error">{{ msg }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <input type="text" name="username" placeholder="Choose a username" required>
+        <input type="password" name="password" placeholder="Create a password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p class="login-text">
+        Already have an account?
+        <a href="{{ url_for('login') }}">Login</a>
+    </p>
+</div>
+
+</body>
+</html>

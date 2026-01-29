@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily {{ skill }} Test</title>
+    <style>
+        body {
+            font-family: Segoe UI;
+            background: #d6bfbf;
+            padding: 30px;
+        }
+        .card {
+            background: #bd9d9d;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #8b514e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📘 Daily {{ skill }} Test</h1>
+
+<form method="POST">
+
+    {% for q in questions %}
+    <div class="card">
+        <p><b>{{ loop.index }}. {{ q.question }}</b></p>
+
+        {% for opt in q.options %}
+            <label>
+                <input type="radio" name="q{{ q.id }}" value="{{ opt }}" required>
+                {{ opt }}
+            </label><br>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <button type="submit">Submit Test</button>
+</form>
+
+<!-- 🔹 Show LeetCode only if available -->
+{% if leetcode %}
+<hr>
+<h2>🧠 Problem Solving Practice</h2>
+<ul>
+    {% for l in leetcode %}
+        <li><a href="{{ l.link }}" target="_blank">{{ l.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+</body>
+</html>
+
+
+
+

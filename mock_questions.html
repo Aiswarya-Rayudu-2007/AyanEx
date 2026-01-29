@@ -1,0 +1,11 @@
+<h2>Mock Interview – {{ role }}</h2>
+
+<form method="post" action="/mock-interview/result">
+  {% for q in questions %}
+    <p><b>{{ q.question }}</b></p>
+    <textarea name="q{{ q.id }}" rows="4" required></textarea>
+    <hr>
+  {% endfor %}
+
+  <button type="submit">Submit Answers</button>
+</form>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Market Skill Heatmap</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            border-radius: 6px;
+            background-color:rgb(195, 156, 156)
+        }
+        .skill-box {
+            width: 220px;
+            margin: 10px auto;
+            padding: 12px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            border-radius: 6px;
+        }
+        h2{
+            color:rgb(103, 66, 66)
+        }
+        p{
+            color:rgb(100, 58, 58)
+        }
+        .rising { background-color: #2ecc71; }
+        .stable { background-color: #f1c40f; }
+        .declining { background-color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+<h2>Market Skill Heatmap</h2>
+<p>Shows which skills are trending in the job market</p>
+
+{% for item in heatmap %}
+    <div class="skill-box {{ item.trend }}">
+        {{ item.skill }} – {{ item.trend | capitalize }}
+    </div>
+{% endfor %}
+
+</body>
+</html>

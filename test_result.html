@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Result</title>
+</head>
+<body style="background: #c19393;color:rgb(109, 67, 67);font-family:Segoe UI;">
+<div style="max-width:800px;margin:auto;">
+
+<h1>📊 Test Results</h1>
+
+<h3>Skill: {{ skill }}</h3>
+<h3>Score: {{ score }} / {{ total }}</h3>
+<h3>📈 Overall Progress</h3>
+<p>Total Tests Taken: {{ progress.tests_taken }}</p>
+<p>Accuracy:
+    {{ (progress.correct_answers / progress.questions_attempted * 100) | round(2) }}%
+</p>
+
+
+
+
+    {% if wrong %}
+        <h3>❌ Review Your Mistakes</h3>
+        {% for w in wrong %}
+            <p><strong>{{ w.question }}</strong></p>
+            <p>✅ Correct Answer: {{ w.correct }}</p>
+            <p>💡 Explanation: {{ w.explanation }}</p>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>🎉 Excellent! All answers correct.</p>
+    {% endif %}
+
+    <a href="/home" style="color:rgb(246, 246, 246);">Back to Home</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AYANEX - Home</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9d6d6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4b2c2c;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* OUTER WRAPPER */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        /* INDIVIDUAL BLOCKS */
+        .card {
+            width: 320px;
+            background-color: #c19393;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #4b2c2c;
+            font-size: 26px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            background-color: #5a3232;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .primary-btn {
+            background-color: #4b2c2c;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .page-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .btn-1{
+            background-color:#5a3232;
+            font-weight:bold;
+        }
+        .career-actions {
+    margin-top: 50px;   /* adjust this value */
+}
+.btn{
+    background-color:#5a3232;
+    color:white;
+}
+h2{
+    color:#5a3232;
+}
+    </style>
+</head>
+
+<body>
+<h2>Welcome, {{ user }}</h2>
+<a href="{{ url_for('logout') }}">Logout</a>
+
+<h1>welcome to AYANEX</h1>
+<p>Helping software professionals adapt to AI-driven jobs.</p>
+
+<div class="page-wrapper">
+
+    <!-- CARD 1: CAREER ANALYSIS -->
+    <div class="card">
+    <div class="card-title">Career Analysis</div>
+
+    <div class="career-actions">
+        <a href="/skill_input">
+            <button class="primary-btn">Start Career Analysis</button>
+        </a>
+
+        <a href="/skill-heatmap">
+            <button class="btn-1">View Market Skill Heatmap</button>
+        </a>
+        <a href="{{ url_for('mock_interview') }}">AI Mock Interview</a>
+
+
+    </div>
+</div>
+
+
+    <!-- CARD 2: DAILY TESTS -->
+    <div class="card">
+        <div class="card-title">Daily Skill Tests</div>
+
+        <a href="/daily_test/robotics">
+            <button>🤖 Daily Robotics Test</button>
+        </a>
+
+        <a href="/daily_test/ai">
+            <button>Start Daily AI Test</button>
+        </a>
+
+        <a href="/daily_test/python">
+            <button>Start Python Daily Test</button>
+        </a>
+
+        <a href="/daily_test/sql">
+            <button>Start SQL Daily Test</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+

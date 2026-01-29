@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AyanEx</title>
+
+    <!-- Auto redirect after 3 seconds -->
+    <meta http-equiv="refresh" content="3;url=/home">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #502e2c, #ba8a8a, #decaca);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .splash {
+            text-align: center;
+            color: white;
+            animation: fadeIn 2s ease;
+        }
+
+        img {
+            width: 120px;
+            margin-bottom: 20px;
+            
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 0;
+            color:#502e2c;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.9;
+            color:#502e2c;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="splash">
+        <img 
+        src="{{ url_for('static', filename='logo.png') }}"
+        style="
+            width: 150px;
+            height: auto;
+            padding: 10px;
+            border-radius: 12px;
+        "
+        >
+
+        <h1>Ayanex</h1>
+        <p>Your Next Career Path</p>
+    </div>
+
+</body>
+</html>

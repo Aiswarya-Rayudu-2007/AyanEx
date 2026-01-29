@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Mock Interview</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mock_interview.css') }}">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #decaca;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+h1 {
+    text-align: center;
+    color: #502e2c;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.interview-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #502e2c;
+}
+
+select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+}
+
+button {
+    padding: 12px;
+    background-color: #ba8a8a;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #502e2c;
+}
+
+.questions {
+    margin-top: 40px;
+}
+
+.question-box {
+    background: #f7f2f2;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    width: 100%;
+}
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>AI Powered Mock Interview</h1>
+    <p class="subtitle">Practice interviews based on your role and skill level</p>
+
+    <!-- STEP 1: ROLE + LEVEL FORM -->
+    {% if not questions %}
+    <form method="POST" class="interview-form">
+        <label>Choose Role</label>
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="Python Developer">Python Developer</option>
+            <option value="Web Developer">Web Developer</option>
+            <option value="Data Analyst">Data Analyst</option>
+        </select>
+
+        <label>Experience Level</label>
+        <select name="level" required>
+            <option value="">Select Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+
+        <button type="submit">Start Mock Interview</button>
+    </form>
+    {% endif %}
+
+    <!-- STEP 2: QUESTIONS FORM -->
+    {% if questions %}
+    <form method="POST" action="{{ url_for('mock_interview_result') }}">
+
+
+        <div class="questions">
+            <h2>Interview Questions</h2>
+
+            {% for q in questions %}
+            <div class="question-box">
+                <p><strong>Q{{ loop.index }}.</strong> {{ q.question }}</p>
+                <textarea name="answer_{{ loop.index }}" required placeholder="Type your answer here..."></textarea>
+
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="submit-btn">
+                Submit Answers
+            </button>
+        </div>
+
+    </form>
+    {% endif %}
+
+</div>
+</body>
+</html>
+

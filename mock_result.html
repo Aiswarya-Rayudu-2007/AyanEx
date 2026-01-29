@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mock Interview Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mock_result.css') }}">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #decaca;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+h1 {
+    text-align: center;
+    color: #502e2c;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.score-box {
+    text-align: center;
+    background: #f4eaea;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.score {
+    font-size: 48px;
+    font-weight: bold;
+    color: #502e2c;
+}
+
+.feedback {
+    margin-top: 10px;
+    color: #333;
+}
+
+.confidence-box {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 25px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #ba8a8a;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.question-feedback h3 {
+    margin-bottom: 15px;
+    color: #502e2c;
+}
+
+.feedback-card {
+    background: #f7f2f2;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.question {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment {
+    color: #444;
+}
+
+.retry-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #502e2c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.retry-btn:hover {
+    background-color: #ba8a8a;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Mock Interview Result</h1>
+    <p class="subtitle">
+        Role: <strong>{{ role }}</strong> | Level: <strong>{{ level }}</strong>
+    </p>
+
+    <!-- SCORE SUMMARY -->
+    <div class="score-box">
+        <h2>Your Interview Score</h2>
+        <div class="score">{{ final_score }}/10</div>
+        <p style="color:red;">DEBUG SCORE: {{ final_score }}</p>
+
+        <p class="feedback">{{ overall_feedback }}</p>
+    </div>
+
+    <!-- SKILL CONFIDENCE -->
+    <div class="confidence-box">
+        <h3>Skill Confidence Level</h3>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ confidence }}%;">
+                {{ confidence }}%
+            </div>
+        </div>
+    </div>
+
+    <!-- QUESTION FEEDBACK -->
+    <div class="question-feedback">
+        <h3>Detailed Feedback</h3>
+
+        {% for f in feedback %}
+        <div class="feedback-box">
+            <strong>{{ f.question }}</strong>
+            <p>{{ f.remark }}</p>
+        </div>
+        {% endfor %}
+
+        
+    </div>
+
+    <a href="/mock-interview">
+        <button class="retry-btn">Try Another Interview</button>
+    </a>
+
+</div>
+
+</body>
+</html>
+

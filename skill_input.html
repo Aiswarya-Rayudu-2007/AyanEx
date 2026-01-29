@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skill Input - SkillShift</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #decaca;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: #ba8a8a;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(69, 38, 38, 0.2);
+            width: 400px;
+        }
+
+
+        
+        button {
+            background-color: #825151;
+            color:#825151;
+            border: none;
+        }
+        button:hover {
+            background-color: #5e3b3b;
+        }
+        .form-label{
+            color:#422a2a;
+            
+        }
+        .mb-4{
+            color:#422a2a;
+        }
+        
+        a {
+            text-decoration: none;
+            color:#532f2f;
+        }
+        .btn{
+            background-color:#5e3838;
+            border-color:#5e3838;
+        }
+        .form-control{
+            color:#ba8a8a;
+            background-color:#decaca;
+            border:#decaca;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="mb-4 text-center">Enter Your Details</h2>
+
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Current Role:</label>
+                <input type="text" name="role" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Years of Experience:</label>
+                <input type="number" name="experience" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Analyze AI Risk</button>
+        </form>
+
+        <div class="mt-3 text-center">
+            <a href="/">⬅ Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
+
